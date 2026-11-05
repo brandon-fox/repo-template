@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "repo-template"
+authors:
+  - family-names: Fox
+    given-names: Brandon
+    email: bfoxtrotfarm@gmail.com
+repository-code: "https://github.com/brandon-fox/repo-template"
+license: MIT
+version: 0.1.0
+date-released: "2026-11-05"
+abstract: "A GitHub template repository that starts a project already passing the First-ADE axioms, plus the principles audit script."
