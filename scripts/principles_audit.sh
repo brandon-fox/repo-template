@@ -2,7 +2,7 @@
 ################################################################################
 # Principles audit
 #
-# Sweeps every non-archived, non-fork repository of the given owners and
+# Sweeps every public, non-archived, non-fork repository of the given owners and
 # reports, per repository, whether each of the six principles in
 # https://github.com/First-ADE/.github/blob/main/PRINCIPLES.md holds in the
 # form a script can check:
@@ -136,7 +136,7 @@ for owner in "${OWNERS[@]}"; do
       ROWS+=("| $repo | empty repository | | | | | |"); FAILS=$((FAILS + 1)); continue
     fi
     check_repo "$repo" "$dir"
-  done < <(gh repo list "$owner" --limit 200 --no-archived --source \
+  done < <(gh repo list "$owner" --limit 200 --no-archived --source --visibility public \
             --json nameWithOwner --jq '.[].nameWithOwner' | sort)
 done
 

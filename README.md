@@ -28,7 +28,7 @@ A GitHub template repository that starts a project in a state that already passe
 
 ## The principles audit
 
-`scripts/principles_audit.sh` sweeps every non-archived, non-fork repository under the owners you name (default: `brandon-fox`, `First-ADE`, `vindicta-platform`) and prints one Markdown row per repository with a PASS or FAIL for each principle that a script can check:
+`scripts/principles_audit.sh` sweeps every public, non-archived, non-fork repository under the owners you name (private repositories are workspaces and vaults, not published work) (default: `brandon-fox`, `First-ADE`, `vindicta-platform`) and prints one Markdown row per repository with a PASS or FAIL for each principle that a script can check:
 
 | Column | Check |
 |---|---|
