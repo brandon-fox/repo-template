@@ -12,7 +12,9 @@
 #   honest       README.md line 1 is "# <name>"; a "> **Status:**" line in lines 2-11
 #   attributed   .mailmap exists; recent commit authors (after .mailmap) are mine or bots
 #   separated    no employer term appears in the tree (allow-listed repos may
-#                name an employer as career history, never as code provenance)
+#                name an employer as career history, never as code provenance);
+#                this script's own file is skipped, since its denylist would
+#                otherwise match itself in every repository that carries it
 #   secrets      gitleaks finds nothing (skipped when gitleaks is not installed)
 #
 # Output is a Markdown table on stdout; exit 1 if any cell is FAIL.
@@ -93,9 +95,13 @@ check_repo() {
   fi
 
   # separated
+  # The audit script is excluded by its own file name: the denylist it carries
+  # is the one place the terms must appear, and a copy of the script in a
+  # template-derived repository is the same self-match, not a breach.
   local hits
   hits=$(grep -rIiEl "$(echo "$DENYLIST" | tr ',' '|')" "$dir" \
-          --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=.venv 2>/dev/null | wc -l | tr -d ' ')
+          --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=.venv \
+          --exclude="$(basename "$0")" 2>/dev/null | wc -l | tr -d ' ')
   if [ "$hits" -eq 0 ]; then
     separated=PASS
   elif echo ",$ALLOW_MENTION," | grep -q ",$repo,"; then
