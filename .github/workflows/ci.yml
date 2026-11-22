@@ -18,17 +18,6 @@ permissions:
 
 jobs:
   lint-and-links:
-    name: Workflow and link checks
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - name: Check markdown links
-        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
-        with:
-          args: >-
-            --no-progress
-            --exclude 'linkedin\.com'
-            --exclude 'mailto:'
-            README.md CONTRIBUTING.md TEMPLATE_README.md
-          fail: true
+    uses: brandon-fox/.github/.github/workflows/links-check.yml@595a8111464a72b0d27e3e7391dcc713f002a73a # main
+    with:
+      targets: 'README.md CONTRIBUTING.md TEMPLATE_README.md'

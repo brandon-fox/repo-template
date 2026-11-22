@@ -18,11 +18,4 @@ permissions:
 
 jobs:
   axioms:
-    name: First-ADE axiom validation
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          fetch-depth: 0
-      - uses: First-ADE/.github/.github/actions/ade-axioms@45bd6f8fb984af2be4f1342e9d98de2486b70ecf # main
+    uses: brandon-fox/.github/.github/workflows/ade-axioms.yml@595a8111464a72b0d27e3e7391dcc713f002a73a # main
