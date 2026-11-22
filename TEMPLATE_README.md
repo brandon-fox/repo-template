@@ -16,7 +16,7 @@ The shape of the system in a few sentences. Link the spec (`specs/`) and the dec
 
 ## Invariants
 
-What CI enforces on every change, in one list. The First-ADE axioms run by default; add the project's own checks here as they appear.
+What CI enforces on every change, in one list. The First-ADE axioms run by default; shared workflows (`python-ci.yml`, `links-check.yml`, `ade-axioms.yml`) and composite setup actions live in [brandon-fox/.github](https://github.com/brandon-fox/.github). Add the project's own checks here as they appear.
 
 ## Independence
 
